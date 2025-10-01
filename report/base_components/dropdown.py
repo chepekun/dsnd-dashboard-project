@@ -11,6 +11,7 @@ class Dropdown(BaseComponent):
         self.id = id
         self.name = name
         self.label = label
+        change = 1 # add a change to trigger workflow?
 
     @override
     def build_component(self, entity_id: int, model: QueryBase):
