@@ -1,0 +1,52 @@
+[project]
+name = "dsnd-dashboard-project"
+version = "0.1.0"
+description = "A dashboard to track employee and team's recruitment risk"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "employee-events",
+    "ipython>=9.6.0",
+    "matplotlib==3.9.2",
+    "numpy==2.1.2",
+    "pandas==2.2.3",
+    "pyright>=1.1.405",
+    "pytest>=8.4.2",
+    "python-fasthtml==0.8.0",
+    "ruff>=0.13.2",
+    "scikit-learn==1.5.2",
+    "scipy==1.14.1",
+    "setuptools>=80.9.0",
+    "sqlite-minutils>=4.0.3",
+]
+
+[tool.pyright]
+pythonVersion = "3.12"
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "basic"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = []
+
+[tool.ruff.lint]
+extend-select = ["N", "E5", "I"]
+ignore = ["N818"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.setuptools.packages.find]
+exclude = ["python-package"]
+
+[tool.uv.sources]
+employee-events = { path = "python-package/dist/employee_events-0.0.tar.gz" }
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
