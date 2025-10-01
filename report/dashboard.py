@@ -16,7 +16,7 @@ class Report(CombinedComponent):
     @property
     @override
     def children(self):
-        return [Header(), DashboardFilters(), Visualizations(), NotesTable()]
+        return [DashboardFilters(), Header(), Visualizations(), NotesTable()]
 
 
 class Header(BaseComponent):
@@ -24,7 +24,10 @@ class Header(BaseComponent):
 
     @override
     def build_component(self, entity_id: int, model: QueryBase):
-        return fh.H1(model.name.capitalize())
+        return fh.H1(
+            model.name.capitalize() + " Performance",
+            style="text-align: center;",
+        )
 
 
 class DashboardFilters(FormGroup):
@@ -88,7 +91,7 @@ class LineChart(MatplotlibViz):
         df.columns = ["Positive", "Negative"]
 
         _, ax = plt.subplots()
-        df.plot(ax=ax)
+        df.plot(ax=ax, kind="line", style=["-g", "-r"])
         self.set_axis_styling(ax, bordercolor="black", fontcolor="black")
         ax.set_xlabel("Event date")
         ax.set_ylabel("Cumulative Sum of Events")

@@ -16,7 +16,7 @@ class Dropdown(BaseComponent):
     def build_component(self, entity_id: int, model: QueryBase):
         options = []
         for _, (text, value) in self.component_data(entity_id, model).iterrows():
-            option = Option(text, value=value, selected="selected" if str(value) == entity_id else "")
+            option = Option(text, value=value, selected="selected" if value == entity_id else "")
             options.append(option)
 
         return Select(*options, name=self.name)
