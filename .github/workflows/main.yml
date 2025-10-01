@@ -5,16 +5,12 @@ name: Run unit tests and check code
 
 on:
   push:
-    branches:    
-      - main
-      - dev
-      - feature/*
+    branches:
+      - '**'
 
   pull_request:
     branches:
-      - main
-      - dev
-      - feature/*
+      - '**'
 
 jobs:
   build:
